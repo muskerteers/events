@@ -14,10 +14,26 @@
     <option value="TOYOTA">TOYOTA</option>
     <option value="PASSAT">PASSAT</option>
 </select>
+<br><br><br>
+
+<img src="" alt="" id="carImage">
 
 <script>
     function selectCar() {
         let car = document.getElementById('cars').value;
+        let carImage = document.getElementById('carImage');
+        if (car === 'BMW') {
+            carImage.setAttribute('src', './img/bmw.jpeg');
+        }
+        else if(car === 'BENZ'){
+            carImage.setAttribute('src', './img/benz.jpeg');
+        }
+        else if(car === 'TOYOTA'){
+            carImage.setAttribute('src', './img/toyota.jpeg');
+        }
+        else if(car === 'PASSAT'){
+            carImage.setAttribute('src', './img/passat.jpeg');
+        }
 
     }
 </script>
