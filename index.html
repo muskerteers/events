@@ -8,7 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-<select  id="cars" onchange="selectCar()">
+<select  id="cars" onchange="selectCar()" >
+    <option value="">Select Car</option>
     <option value="BMW">BMW</option>
     <option value="BENZ">BENZ</option>
     <option value="TOYOTA">TOYOTA</option>
@@ -16,7 +17,7 @@
 </select>
 <br><br><br>
 
-<img src="" alt="" id="carImage">
+<img src='./img/placeholder.png' alt="" id="carImage">
 
 <script>
     function selectCar() {
@@ -33,6 +34,8 @@
         }
         else if(car === 'PASSAT'){
             carImage.setAttribute('src', './img/passat.jpeg');
+        }else  {
+            carImage.setAttribute('src', './img/placeholder.png');
         }
 
     }
