@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    <label>Name
+        <input type="text" id="name" onkeyup="validateName()">
+    </label>
+    <p id="message"></p>
+
+    <button type="button" id="save" disabled>
+        Save
+    </button>
+</form>
+
+<script>
+    function validateName() {
+        let name = document.getElementById('name'),
+            message = document.getElementById('message'),
+            savebutton = document.getElementById('save');
+
+        name.style.outline = 'none';
+
+        if (name.value.length < 6) {
+            name.style.border = '1px solid red';
+            message.style.color = 'red';
+            message.innerText = 'Name too short';
+        } else {
+            name.style.border = '1px solid green';
+            message.style.color = 'green';
+            message.innerText = 'You can now Save user';
+            savebutton.removeAttribute('disabled');
+        }
+    }
+</script>
+</body>
+</html>
