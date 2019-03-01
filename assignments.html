@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" placeholder="Last Name">
+                <input type="text" class="form-control" id="lname" placeholder="Last Name" onkeyup="lnameIsValid()">
                 <small id="lname_message"></small>
             </div>
 
@@ -67,6 +67,21 @@
             message.innerText = 'First Name is valid';
             message.style.color = goodColor;
             fname.style.borderColor = goodColor;
+        }
+    }
+
+    function lnameIsValid() {
+        let lname = document.querySelector("#lname");
+        let message = document.getElementById('lname_message');
+
+        if (lname.value.length < 3){
+            message.innerText = 'Last Name is Too short';
+            message.style.color = badColor;
+            lname.style.borderColor = badColor;
+        }else{
+            message.innerText = 'Last Name is valid';
+            message.style.color = goodColor;
+            lname.style.borderColor = goodColor;
         }
     }
 </script>
