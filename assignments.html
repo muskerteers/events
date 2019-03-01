@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" class="form-control" id="email" placeholder="Email" onkeyup="emailIsValid()">
                 <small id="email_message"></small>
             </div>
 
@@ -59,11 +59,11 @@
         let fname = document.querySelector("#fname");
         let message = document.getElementById('fname_message');
 
-        if (fname.value.length < 3){
+        if (fname.value.length < 3) {
             message.innerText = 'First Name is Too short';
             message.style.color = badColor;
             fname.style.borderColor = badColor;
-        }else{
+        } else {
             message.innerText = 'First Name is valid';
             message.style.color = goodColor;
             fname.style.borderColor = goodColor;
@@ -74,16 +74,37 @@
         let lname = document.querySelector("#lname");
         let message = document.getElementById('lname_message');
 
-        if (lname.value.length < 3){
+        if (lname.value.length < 3) {
             message.innerText = 'Last Name is Too short';
             message.style.color = badColor;
             lname.style.borderColor = badColor;
-        }else{
+        } else {
             message.innerText = 'Last Name is valid';
             message.style.color = goodColor;
             lname.style.borderColor = goodColor;
         }
     }
+
+    function validateEmail(email) {
+        const emailRegex = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i;
+        return emailRegex.test(String(email).toLowerCase());
+    }
+
+    function emailIsValid() {
+        let email = document.querySelector("#email"),
+            message = document.querySelector("#email_message");
+
+        if (!validateEmail(email.value)) {
+            message.innerText = 'Email is not valid';
+            message.style.color = badColor;
+            email.style.borderColor = badColor;
+        }else {
+            message.innerText = 'Email is valid';
+            message.style.color = goodColor;
+            email.style.borderColor = goodColor;
+        }
+    }
+
 </script>
 </body>
 </html>
