@@ -34,13 +34,14 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" onkeyup="passwordIsValid()">
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                       onkeyup="passwordIsValid()">
                 <small id="password_message"></small>
             </div>
 
             <div class="form-group">
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" >
+                <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password">
                 <small id="cpassword_message"></small>
             </div>
 
@@ -54,6 +55,7 @@
 <script type="text/javascript">
     let goodColor = 'green';
     let badColor = 'red';
+    let submitButton = document.querySelector('#register');
 
     function fnameIsValid() {
         let fname = document.querySelector("#fname");
@@ -63,10 +65,13 @@
             message.innerText = 'First Name is Too short';
             message.style.color = badColor;
             fname.style.borderColor = badColor;
+            submitButton.setAttribute('disabled', 'true');
         } else {
             message.innerText = 'First Name is valid';
             message.style.color = goodColor;
             fname.style.borderColor = goodColor;
+            submitButton.setAttribute('disabled', 'false');
+
         }
     }
 
@@ -78,10 +83,14 @@
             message.innerText = 'Last Name is Too short';
             message.style.color = badColor;
             lname.style.borderColor = badColor;
+            submitButton.setAttribute('disabled', 'true');
+
         } else {
             message.innerText = 'Last Name is valid';
             message.style.color = goodColor;
             lname.style.borderColor = goodColor;
+            submitButton.setAttribute('disabled', 'false');
+
         }
     }
 
@@ -98,15 +107,17 @@
             message.innerText = 'Email is not valid';
             message.style.color = badColor;
             email.style.borderColor = badColor;
-        }else {
+            submitButton.setAttribute('disabled', 'true');
+        } else {
             message.innerText = 'Email is valid';
             message.style.color = goodColor;
             email.style.borderColor = goodColor;
+            submitButton.setAttribute('disabled', 'false');
         }
     }
 
     function validatePassword(password) {
-        const passwordRegex =  /^(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+        const passwordRegex = /^(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
         return passwordRegex.test(password);
     }
 
@@ -118,10 +129,13 @@
             message.innerText = 'Password is not valid: Password must contain at least one small case character, one uppercase character, one special character and one numeric character and must be at least 8 character long';
             message.style.color = badColor;
             password.style.borderColor = badColor;
-        }else {
+            submitButton.setAttribute('disabled', 'true');
+        } else {
             message.innerText = 'Password is valid';
             message.style.color = goodColor;
             password.style.borderColor = goodColor;
+            submitButton.setAttribute('disabled', 'false');
+
         }
     }
 
