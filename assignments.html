@@ -34,13 +34,13 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password" onkeyup="passwordIsValid()">
                 <small id="password_message"></small>
             </div>
 
             <div class="form-group">
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" >
                 <small id="cpassword_message"></small>
             </div>
 
@@ -102,6 +102,26 @@
             message.innerText = 'Email is valid';
             message.style.color = goodColor;
             email.style.borderColor = goodColor;
+        }
+    }
+
+    function validatePassword(password) {
+        const passwordRegex =  /^(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+        return passwordRegex.test(password);
+    }
+
+    function passwordIsValid() {
+        let password = document.querySelector("#password"),
+            message = document.querySelector("#password_message");
+
+        if (!validatePassword(password.value)) {
+            message.innerText = 'Password is not valid: Password must contain at least one small case character, one uppercase character, one special character and one numeric character and must be at least 8 character long';
+            message.style.color = badColor;
+            password.style.borderColor = badColor;
+        }else {
+            message.innerText = 'Password is valid';
+            message.style.color = goodColor;
+            password.style.borderColor = goodColor;
         }
     }
 
